@@ -45,13 +45,15 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   autenticar(loginRequest: any): void {
-console.log(loginRequest);
+
     this.obterAutenticacao = this.loginService.autenticacao(loginRequest).subscribe(
       (data: any) => {
 
         if (data.tipo != false && data.dados.usuario != null) {
           this.localSotrageService.setObject('userToken', data.dados.token);
           this.router.navigate(['home']);
+        } else if (data.tipo == false) {
+          alert(data.mensagem);
         }
       },
       (error) => {
@@ -61,7 +63,7 @@ console.log(loginRequest);
 
   ngOnDestroy(): void {
     if (this.obterAutenticacao){
-      this.obterAutenticacao.unsubscribe();
+        this.obterAutenticacao.unsubscribe();
     }
   }
 
