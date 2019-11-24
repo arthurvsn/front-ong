@@ -41,7 +41,7 @@ export class AdcionarAgendamentosComponent implements OnInit {
       (data: any) => {
         if (data.tipo != false && data.dados.servicos != null) {
           this.modelServicos = data.dados.servicos;
-         }
+        }
       },
       (error) => {
         this.erros = true;
@@ -53,7 +53,7 @@ export class AdcionarAgendamentosComponent implements OnInit {
   onSubmit(agendamento) {
     this.agendamentoService.cadastrarAgendamento(agendamento).subscribe(
       (data: any) => {
-        if (data.tipo != false && data.dados.agendamento != null) {
+        if (data.tipo != false && data.dados.agendamentos != null) {
           this.router.navigate(['agendamentos']);
          }
       },

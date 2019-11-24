@@ -1,36 +1,40 @@
 <div class="container">
-  <h2>Agendamentos</h2>
-  <a class="nav-link" [routerLink]="['/agendamentos/adiconar']">Adicionar Agendamento<img src="../../assets/img/adicionar.svg" alt="Adicionar"></a>
-  <div class="produtos">
-    <div class="row" id="header-grid-produtos">
-        <div class="header text-left col-2">Id</div>
-        <div class="header text-left col-2">Nome</div>
-        <div class="header text-left col-4">Descrição</div>
-        <div class="header text-left col-2">Data</div>
+  <div class="p-1">
+    <h2>Agendamentos</h2>
+    <a class="nav-link" [routerLink]="['/agendamentos/adiconar']">Adicionar Agendamento<img src="../../assets/img/adicionar.svg" alt="Adicionar"></a>
+    <div class="produtos">
+      <div class="row" id="header-grid-produtos">
+          <div class="header text-left col-2">Id</div>
+          <div class="header text-left col-2">Data</div>
+          <div class="header text-left col-2">Hora</div>
+          <div class="header text-left col-4">Serviço</div>
+          <div class="header text-left col-2">Usuario</div>
+      </div>
+      <div class="row mb-3">
+          <ul class="col-12">
+            <li class="row li-produtos" *ngFor="let item of modelAgendamentos">
+              <div class="text-left col-2 align-middle">
+                <span>{{ item.id_agendamento }}</span>
+              </div>
+              <div class="text-left col-2 align-middle">
+                <span>{{ item.data_agendamento  | date: 'dd/MM/yyyy' }}</span>
+              </div>
+              <div class="text-left col-2 align-middle">
+                <span>{{ item.data_agendamento  | date: time }}</span>
+              </div>
+              <div class="text-left col-4 align-middle">
+                <span>{{ item.servico.nome }}</span>
+              </div>
+              <div class="text-left col-2 align-middle">
+                <span>{{ item.usuario.nome}}</span>
+              </div>
+            </li>
+          </ul>
+      </div>
     </div>
-    <div class="row mb-3">
-        <ul class="col-12">
-          <li class="row li-produtos" *ngFor="let item of modelAgendamentos">
-            <div class="text-left col-2 align-middle">
-              <span>{{ item.idAgendamento }}</span>
-            </div>
-            <div class="text-left col-2 align-middle">
-             <span>{{ item.nome }}</span>
-            </div>
-            <div class="text-left col-4 align-middle">
-              <span>{{ item.descricao }}</span>
-            </div>
-            <div class="text-left col-2 align-middle">
-              <span>{{ item.data_cadastro | date: 'dd/MM/yyyy' }}</span>
-            </div>
-            <div class="text-left col-2 align-middle">
-              <a class="btn btn-success" [routerLink]="['/servicos/editar-servico', item.idServico]">Editar</a>
-            </div>
-          </li>
-        </ul>
+    
+    <div *ngIf="erros" >
+      {{ mensagemErro }}
     </div>
-  </div>
-  <div *ngIf="erros" >
-    {{ mensagemErro }}
   </div>
 </div>

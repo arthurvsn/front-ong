@@ -16,6 +16,10 @@ export class AgendamentoService {
     private localSotrageService: LocalStorageService
   ) { }
 
+  buscarAgendamento() {
+    return this.http.get<any>(urlServicos, this.createHeader())
+  }
+
   cadastrarAgendamento(body) {
     return this.http.post<any>(urlServicos, body, this.createHeader());
   }
