@@ -54,6 +54,7 @@ export class LoginComponent implements OnInit, OnDestroy {
           this.router.navigate(['home']);
         } else if (data.tipo == false) {
           alert(data.mensagem);
+          
         }
       },
       (error) => {
