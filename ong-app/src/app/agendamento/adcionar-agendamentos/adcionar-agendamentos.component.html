@@ -1,0 +1,35 @@
+<div class="p-3">
+  <h3>Novo Agendamento</h3>
+
+  <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)">
+
+    <div class="row">
+
+      <div class="col-3">
+        <label for="nome">
+          Data Agendamento
+        </label>
+        <input id="data" type="date" class="form-control" formControlName="data" />
+      </div>
+
+      <div class="col-3">
+        <label for="nome">
+          Hora
+        </label>
+        <input id="hora" class="form-control" type="time" formControlName="hora">
+      </div>
+    
+      <div class="col-6">
+        <label for="descricao">
+          Serviços
+        </label>
+        <select class="form-control" formControlName="servico" name="servico" id="servico">
+          <option value="{{item.id_servico}}" *ngFor="let item of modelServicos">{{item.descricao}}</option>
+        </select>
+      </div>
+    </div>
+
+    <button class="button btn btn-success my-2" type="submit">Agendar</button>
+
+  </form>
+</div>

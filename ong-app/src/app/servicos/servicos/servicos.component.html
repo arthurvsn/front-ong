@@ -1,0 +1,34 @@
+<div class="container">
+  <h2>Serviços</h2>
+  <a class="nav-link adicionar-produto" [routerLink]="['/servicos/adicionar']">
+    Adicionar Serviço<img src="../../assets/img/adicionar.svg" alt="Adicionar">
+  </a>
+  <div class="produtos">
+    <div class="row" id="header-grid-produtos">
+        <div class="header text-left col-2">Usuario</div>
+        <div class="header text-left col-4">Serviço</div>
+        <div class="header text-left col-2">Data</div>
+    </div>
+    <div class="row mb-3">
+        <ul class="col-12">
+          <li class="row li-produtos my-2" *ngFor="let item of modelServicos">
+            <div class="text-left col-2 align-middle">
+             <span>{{ item.nome }}</span>
+            </div>
+            <div class="text-left col-4 align-middle">
+              <span>{{ item.descricao }}</span>
+            </div>
+            <div class="text-left col-2 align-middle">
+              <span>{{ item.data_cadastro | date: 'dd/MM/yyyy' }}</span>
+            </div>
+            <div class="text-left col-2 align-middle">
+              <a class="btn btn-success" [routerLink]="['/servicos/editar', item.id_servico]">Editar</a>
+            </div>
+          </li>
+        </ul>
+    </div>
+  </div>
+  <div *ngIf="erros" >
+    {{ mensagemErro }}
+  </div>
+</div>

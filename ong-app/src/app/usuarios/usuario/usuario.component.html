@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="p-1">
+    <h2>Usuarios</h2>
+    <a class="nav-link adicionar-produto" [routerLink]="['/usuarios/adicionar']">
+      Adicionar Usuario<img src="../../assets/img/adicionar.svg" alt="Adicionar">
+    </a>
+    <div class="produtos">
+      <div class="row" id="header-grid-produtos">
+          <div class="header text-left col-2">CPF</div>
+          <div class="header text-left col-4">NOME</div>
+          <div class="header text-left col-2">LOGIN</div>
+      </div>
+      <div class="row mb-3">
+          <ul class="col-12">
+            <li class="row li-produtos my-2" *ngFor="let item of modelUsuarios">
+              <div class="text-left col-2 align-middle">
+              <span>{{ item.cpf }}</span>
+              </div>
+              <div class="text-left col-4 align-middle">
+                <span>{{ item.nome }}</span>
+              </div>
+              <div class="text-left col-4 align-middle">
+                <span>{{ item.login }}</span>
+              </div>
+              <div class="text-left col-2 align-middle">
+                <a class="btn btn-success" [routerLink]="['/servicos/editar', item.id_servico]">Editar</a>
+              </div>
+            </li>
+          </ul>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="erros" >
+    {{ mensagemErro }}
+  </div>
+</div>
